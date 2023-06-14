@@ -1,0 +1,23 @@
+apiVersion: skaffold/v4beta5
+kind: Config
+
+metadata:
+  name: intentional
+
+
+build:
+  tagPolicy:
+    sha256: {}
+    
+  local:
+    push: true
+    
+  artifacts:
+    - image: ghcr.io/mlambda-net/intentional/docs
+      context: .
+      docker:
+        dockerfile: docker/doc.docker
+        
+deploy:
+  docker:
+    images: []
